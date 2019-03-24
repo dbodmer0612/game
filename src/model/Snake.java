@@ -6,6 +6,13 @@ public interface Snake {
     void updateSnake();
     Position getPosition();
     boolean collision();
+    void turnRight();
+    void turnLeft();
+    void turnUp();
+    void turnDown();
+    SnakeImpl.Direction getDirection();
+
+
 
 
 
