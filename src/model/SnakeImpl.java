@@ -2,10 +2,19 @@ package model;
 
 import java.awt.*;
 
+import javafx.scene.control.skin.TextInputControlSkin;
+
 public class SnakeImpl {
   private int length;
-  int headXPos;
-  int headYPos;
+  Position position;
+  enum Direction {
+    UP, DOWN, LEFT, RIGHT
+  }
+
+
+
+
+
 
 
 
