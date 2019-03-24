@@ -13,8 +13,6 @@ public class PositionImpl implements Position {
     this.y = y;
   }
 
-
-
   @Override
   public void setX(int x) {
     this.x = x;
