@@ -6,10 +6,8 @@ public interface Segment {
   void setY(int y);
   int getX();
   int getY();
-  void turnRight();
-  void turnLeft();
-  void turnUp();
-  void turnDown();
+  boolean isTail();
+  void setTail(boolean tail);
   void setDirection(SegmentImpl.Direction d);
   void update();
   SegmentImpl.Direction getDirection();

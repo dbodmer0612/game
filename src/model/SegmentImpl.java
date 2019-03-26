@@ -1,9 +1,10 @@
 package model;
 
 public class SegmentImpl implements Segment {
-  int x;
-  int y;
-  Direction direction;
+  private int x;
+  private int y;
+  private Direction direction;
+  private boolean isTail;
 
   public SegmentImpl() {
 
@@ -13,6 +14,13 @@ public class SegmentImpl implements Segment {
     this.x = x;
     this.y = y;
     this.direction = direction;
+  }
+
+  public SegmentImpl(int x, int y, Direction direction, boolean isTail) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.isTail = isTail;
   }
 
   public SegmentImpl(int x, int y) {
@@ -42,23 +50,13 @@ public class SegmentImpl implements Segment {
   }
 
   @Override
-  public void turnRight() {
-    direction = Direction.RIGHT;
+  public boolean isTail() {
+    return this.isTail;
   }
 
   @Override
-  public void turnLeft() {
-    direction = Direction.LEFT;
-  }
-
-  @Override
-  public void turnUp() {
-    direction = Direction.UP;
-  }
-
-  @Override
-  public void turnDown() {
-    direction = Direction.DOWN;
+  public void setTail(boolean tail) {
+    this.isTail = tail;
   }
 
   @Override
