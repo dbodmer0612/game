@@ -1,19 +1,12 @@
 package model;
 
+import java.util.List;
+
 public interface Snake {
 
     void addLength();
     void updateSnake();
-    Position getPosition();
+    List<Segment> getBody();
     boolean collision();
-    void turnRight();
-    void turnLeft();
-    void turnUp();
-    void turnDown();
-    SnakeImpl.Direction getDirection();
-
-
-
-
-
+    void turn(SegmentImpl.Direction direction);
 }

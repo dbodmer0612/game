@@ -1,25 +1,38 @@
 package model;
 
 import java.awt.*;
+import java.util.List;
 
 public class SnakeImpl implements Snake {
-  private int length;
-  List position;
-  Direction direction;
+  private List<Segment> body;
+  private List<Point> turningPoints;
+  private Segment head;
+  private Segment tail;
+
+
+  public SnakeImpl() {
+  }
+
+  public SnakeImpl(Segment head) {
+    this.head = head;
+  }
 
   @Override
   public void addLength() {
-    length++;
+    body.add(new SegmentImpl());
   }
 
   @Override
   public void updateSnake() {
-
+    for (Segment s : body) {
+//      need to figure out how to make the snake turn correctly
+      s.update();
+    }
   }
 
   @Override
-  public Position getPosition() {
-    return position;
+  public List<Segment> getBody() {
+    return body;
   }
 
   @Override
@@ -28,39 +41,33 @@ public class SnakeImpl implements Snake {
   }
 
   @Override
-  public void turnRight() {
-    direction = Direction.RIGHT;
+  public void turn(SegmentImpl.Direction direction) {
+    if(!isOpposite(direction)) {
+      this.head.setDirection(direction);
+    }
   }
 
-  @Override
-  public void turnLeft() {
-    direction = Direction.LEFT;
+  private boolean isOpposite(SegmentImpl.Direction direction) {
+    switch (direction) {
+      case LEFT:
+        if(this.head.getDirection() == SegmentImpl.Direction.RIGHT) {
+          return true;
+        }
+      case RIGHT:
+        if(this.head.getDirection() == SegmentImpl.Direction.LEFT) {
+          return true;
+        }
+      case UP:
+        if(this.head.getDirection() == SegmentImpl.Direction.DOWN) {
+          return true;
+        }
+      case DOWN:
+        if(this.head.getDirection() == SegmentImpl.Direction.UP) {
+          return true;
+        }
+    }
+    return false;
   }
-
-  @Override
-  public void turnUp() {
-    direction = Direction.UP;
-  }
-
-  @Override
-  public void turnDown() {
-    direction = Direction.DOWN;
-  }
-
-  @Override
-  public Direction getDirection() {
-    return direction;
-  }
-
-  enum Direction {
-    UP, DOWN, LEFT, RIGHT
-  }
-
-
-
-
-
-
 
 
 }
